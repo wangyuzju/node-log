@@ -35,20 +35,32 @@ _.forEach(logs, function(str){
     //rankListLog.handle(data);
 });
 
-var output = '';
-_.forEach(result, function(v, k){
-    output += '\n' + k + ' (' + _.keys(v[0]).join('|') + ') ' + '\n---\n';
 
+var dateStamp = utils.formatDate(new Date(new Date() - 24*3600*1000), 'yyyy-MM-dd');
+
+var outputDir = './log/' + dateStamp + '/';
+
+
+if(!fs.existsSync(outputDir)){
+    fs.mkdirSync(outputDir);
+}
+
+
+
+_.forEach(result, function(v, k){
+    //output += '\n' + k + ' (' + _.keys(v[0]).join('|') + ') ' + '\n---\n';
+    var output = '';
 
     // content
     _.forEach(v, function(_v){
         //console.log(_v)
         output += _.values(_v).join('\t') + '\n';
     });
+
+    fs.writeFileSync(outputDir + k + '.txt', output);
 });
 
 //console.log(output);
-var dateStamp = utils.formatDate(new Date(new Date() - 24*3600*1000), 'yyyy-MM-dd');
 
-fs.writeFileSync('./log/' + dateStamp + '.txt', output);
+//fs.writeFileSync('./log/' + dateStamp + '.txt', output);
 //console.log(rankListLog.getResult());
