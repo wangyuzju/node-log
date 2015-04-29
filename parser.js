@@ -1,7 +1,7 @@
 var fs = require('fs');
 var qs = require('qs');
 var _ = require('lodash');
-
+var utils = require('./lib/utils');
 
 
 
@@ -47,5 +47,8 @@ _.forEach(result, function(v, k){
     });
 });
 
-console.log(output);
+//console.log(output);
+var dateStamp = utils.formatDate(new Date(new Date() - 24*3600*1000), 'yyyy-MM-dd');
+
+fs.writeFileSync('./log/' + dateStamp + '.txt', output);
 //console.log(rankListLog.getResult());
