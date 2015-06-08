@@ -8,6 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "glob": "^5.0.10",
     "lodash": "^3.6.0",
     "qs": "^2.4.1"
   },
