@@ -4,7 +4,6 @@ var _ = require('lodash');
 var utils = require('./lib/utils');
 
 
-
 var logStr = _.trim(fs.readFileSync('./data/_today_log.tmp', {encoding: 'utf-8'}));
 logs = logStr.split('\n');
 
@@ -36,7 +35,11 @@ _.forEach(logs, function(str){
 });
 
 
-var dateStamp = utils.formatDate(new Date(new Date() - 24*3600*1000), 'yyyy-MM-dd');
+var dateStamp = utils.formatDate(
+	// date object
+	process.argv[2] ? new Date(process.argv[2]) : new Date(new Date() - 24*3600*1000), 
+	// format str
+	'yyyy-MM-dd');
 
 var outputDir = './log/' + dateStamp + '/';
 
