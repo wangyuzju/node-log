@@ -1,4 +1,5 @@
 /**
+ * 把某一期间内的数据筛选出来并合并导出
  * concat defined log files
  */
 var fs = require('fs');
