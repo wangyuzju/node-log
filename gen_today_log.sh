@@ -1,6 +1,6 @@
 #!/bin/sh
-#PWD=/root/www/node-log
-PWD=$(pwd)
+PWD=/root/www/node-log
+#PWD=$(pwd)
 SERVER=bae@121.40.122.152
 
 ssh $SERVER /home/bae/tongji/filter_rank.sh $1
